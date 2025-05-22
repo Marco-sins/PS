@@ -6,7 +6,7 @@
 /*   By: mmembril <mmembril@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:48:16 by mmembril          #+#    #+#             */
-/*   Updated: 2025/05/22 12:45:30 by mmembril         ###   ########.fr       */
+/*   Updated: 2025/05/22 14:13:40 by mmembril         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void ft_error(char *str)
 {
     ft_printf("%s", str);
+    free_all();
     exit(1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mmembril <mmembril@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:35:45 by mmembril          #+#    #+#             */
-/*   Updated: 2025/05/22 12:46:45 by mmembril         ###   ########.fr       */
+/*   Updated: 2025/05/22 14:37:40 by mmembril         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,24 @@ t_node *create_node(int value)
 void connect_nodes(t_stack *pila, char **str)
 {
     t_node *node;
+    t_node *new;
     int i;
 
     i = 0;
     while (str[i])
     {
-        node = create_node(ft_atoi(str[i]));
+        new = create_node(ft_atoi(str[i]));
+        if (!new)
+            ft_error("Error in malloc\n");
+        if (!pila->a)
+            pila->a = new;
+        else
+        {
+            node = pila->a;
+            while (node->next)
+                node = node->next;
+            node->next = new;
+        }
+        i++;
     }
 }
