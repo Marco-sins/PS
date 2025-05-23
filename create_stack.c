@@ -6,7 +6,7 @@
 /*   By: mmembril <mmembril@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:35:45 by mmembril          #+#    #+#             */
-/*   Updated: 2025/05/22 14:37:40 by mmembril         ###   ########.fr       */
+/*   Updated: 2025/05/23 13:47:45 by mmembril         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ t_stack *init_stack(void)
     
     pila = (t_stack *)malloc(sizeof(t_stack));
     if (!pila)
-        ft_error("Error in malloc");
+        return (0);
     pila->a = NULL;
     pila->b = NULL;
     return (pila);
 }
 
-void check_av(int ac, char **av)
+int check_av(int ac, char **av)
 {
     int i;
 
@@ -34,7 +34,7 @@ void check_av(int ac, char **av)
         while (av[1][i])
         {
             if (!ft_isdigit(av[1][i]) && av[1][i] != ' ')
-                ft_error("Error in the arguments\n");
+                return (0);
             i++;
         }
     }
@@ -44,10 +44,11 @@ void check_av(int ac, char **av)
         while (av[i])
         {
             if (!ft_isnumber(av[i]))
-                ft_error("Error in the arguments\n");
+                return (0);
             i++;
         }
     }
+    return (1);
 }
 
 char **ft_complete(int ac, char **av)
@@ -57,7 +58,7 @@ char **ft_complete(int ac, char **av)
 
     str = (char **)ft_calloc(sizeof(char *), ac);
     if (!str)
-        return (1);
+        return (NULL);
     i = 0;
     while (i < ac - 2)
     {
@@ -74,13 +75,13 @@ t_node *create_node(int value)
 
     node = malloc(sizeof(t_node));
     if (!node)
-        ft_error("Error in malloc\n");
+        return (0);
     node->value = value;
     node->next = NULL;
     return (node);
 }
 
-void connect_nodes(t_stack *pila, char **str)
+void connect_node(t_stack *pila, char **str)
 {
     t_node *node;
     t_node *new;
@@ -91,7 +92,7 @@ void connect_nodes(t_stack *pila, char **str)
     {
         new = create_node(ft_atoi(str[i]));
         if (!new)
-            ft_error("Error in malloc\n");
+            ft_error("Error in malloc\n", pila);
         if (!pila->a)
             pila->a = new;
         else

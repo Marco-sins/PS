@@ -1,45 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmembril <mmembril@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/04 18:47:57 by mmembril          #+#    #+#             */
-/*   Updated: 2025/05/23 13:48:07 by mmembril         ###   ########.fr       */
+/*   Created: 2025/05/23 09:54:36 by mmembril          #+#    #+#             */
+/*   Updated: 2025/05/23 13:46:30 by mmembril         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "push_swap.h"
 
-int	ft_printf(char const *str, ...)
+void free_all(t_stack *pila, char **str)
 {
-	int		i;
-	int		len;
-	va_list	args;
+    int i;
 
-	va_start(args, str);
-	i = 0;
-	len = 0;
-	while (str[i])
-	{
-		if (str[i] == '%')
-		{
-			i++;
-			len += ft_type(str[i], args);
-		}
-		else
-			len += ft_putchar_fd_f(str[i], 1);
-		i++;
-	}
-	va_end(args);
-	return (len);
+    i = 0;
+    if (pila->a)
+        free(pila->a);
+    if (pila->b)
+        free(pila->b);
+    while (str[i])
+    {
+        free(str[i]);
+        i++;
+    }
+    free(str);
 }
 
-int main(void)
+void free_stack(t_stack *pila)
 {
-	int i = 15;
-	printf("%x\n", i);
-	ft_printf("%x\n", i);
-	return (0);
+    if (pila->a)
+        free(pila->a);
+    if (pila->b)
+        free(pila->b);
+    if (pila)
+        free(pila);
 }

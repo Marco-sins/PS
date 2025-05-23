@@ -6,7 +6,7 @@
 /*   By: mmembril <mmembril@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 13:21:59 by mmembril          #+#    #+#             */
-/*   Updated: 2025/05/22 12:45:55 by mmembril         ###   ########.fr       */
+/*   Updated: 2025/05/23 13:46:46 by mmembril         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,15 @@ typedef struct s_stack
     t_node *b;
 }   t_stack;
 
-t_stack *init_stack(void);
+void connect_node(t_stack *pila, char **str);
+t_node *create_node(int value);
 char **ft_complete(int ac, char **av);
-void ft_error(char *str);
-void create_nodes(t_stack *pila, char **str);
+int check_av(int ac, char **av);
+t_stack *init_stack(void);
+void free_all(t_stack *pila, char **str);
+void ft_error(char *str, t_stack *pila);
 int ft_isnumber(const char *str);
+void print_stack(t_stack *pila);
+void free_stack(t_stack *pila);
 
 #endif

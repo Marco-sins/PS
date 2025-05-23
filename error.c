@@ -6,16 +6,16 @@
 /*   By: mmembril <mmembril@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:48:16 by mmembril          #+#    #+#             */
-/*   Updated: 2025/05/22 14:13:40 by mmembril         ###   ########.fr       */
+/*   Updated: 2025/05/23 10:05:05 by mmembril         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_error(char *str)
+void ft_error(char *str, t_stack *pila)
 {
     ft_printf("%s", str);
-    free_all();
+    free_stack(pila);
     exit(1);
 }
 
