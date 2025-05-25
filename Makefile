@@ -1,41 +1,48 @@
-SRCS			= main.c free.c error.c create_stack.c moves/push.c  
-OBJS			= $(SRCS:.c=.o)
+SRCS			= main.c free.c error.c create_stack.c moves/push.c
+OBJDIR			= objs
+OBJS			= $(SRCS:%.c=$(OBJDIR)/%.o)
 
-CC				= cc
+CC				= cc -g
 RM				= rm -fr
 CFLAGS			= -Wall -Wextra -Werror
 
-NAME			= push_swap.a
+NAME			= push_swap
 
-LIBFT_DIR = Libft
-FT_PRINTF_DIR = ft_printf
+LIBFT_DIR		= Libft
+FT_PRINTF_DIR	= ft_printf
 
-LIBFT = $(LIBFT_DIR)/libft.a
-FT_PRINTF =  $(FT_PRINTF_DIR)/libftprintf.a
+LIBFT			= $(LIBFT_DIR)/libft.a
+FT_PRINTF		= $(FT_PRINTF_DIR)/libftprintf.a
 
-LIBS = $(LIBFT) $(FT_PRINTF)
+LIBS			= $(LIBFT) $(FT_PRINTF)
 
-all:			$(NAME)
+all: $(NAME)
 
-$(NAME):		$(OBJS) $(LIBS)
-				ar rcs $(NAME) $(OBJS) $(LIBS)
+$(NAME): $(LIBFT) $(FT_PRINTF) $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS)
 
+# Compila un .c en un .o dentro de objs/
+$(OBJDIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Librerías externas
 $(LIBFT):
-				@make -C $(LIBFT_DIR)
+	@make -C $(LIBFT_DIR)
 
 $(FT_PRINTF):
-				@make -C $(FT_PRINTF_DIR)
+	@make -C $(FT_PRINTF_DIR)
 
 clean:
-				$(RM) $(OBJS)
-				@make -C $(LIBFT_DIR) clean
-				@make -C $(FT_PRINTF_DIR) clean
+	$(RM) $(OBJDIR)
+	@make -C $(LIBFT_DIR) clean
+	@make -C $(FT_PRINTF_DIR) clean
 
-fclean:			clean
-				$(RM) $(NAME)
-				@make -C $(LIBFT_DIR) fclean
-				@make -C $(FT_PRINTF_DIR) fclean
+fclean: clean
+	$(RM) $(NAME)
+	@make -C $(LIBFT_DIR) fclean
+	@make -C $(FT_PRINTF_DIR) fclean
 
-re:				fclean all
-					
-.PHONY:			all clean fclean re
+re: fclean all
+
+.PHONY: all clean fclean re

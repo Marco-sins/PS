@@ -33,22 +33,24 @@ int check_av(int ac, char **av)
         i = 0;
         while (av[1][i])
         {
-            if (!ft_isdigit(av[1][i]) && av[1][i] != ' ')
-                return (0);
+            if (!ft_isdigit(av[1][i]) && av[1][i] != ' ' && av[1][i] != '-' && av[1][i] != '+')
+                return (false);
             i++;
         }
     }
-    else
+    else if (ac > 2)
     {
         i = 1;
         while (av[i])
         {
             if (!ft_isnumber(av[i]))
-                return (0);
+                return (false);
             i++;
         }
     }
-    return (1);
+    else
+        return (false);
+    return (true);
 }
 
 char **ft_complete(int ac, char **av)

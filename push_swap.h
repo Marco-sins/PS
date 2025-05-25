@@ -16,6 +16,7 @@
 #include "Libft/libft.h"
 #include "ft_printf/ft_printf.h"
 #include <stdint.h>
+#include <stdbool.h>
 
 typedef struct s_node
 {

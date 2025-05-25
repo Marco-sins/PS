@@ -35,11 +35,3 @@ int	ft_printf(char const *str, ...)
 	va_end(args);
 	return (len);
 }
-
-int main(void)
-{
-	int i = 15;
-	printf("%x\n", i);
-	ft_printf("%x\n", i);
-	return (0);
-}

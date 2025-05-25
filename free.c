@@ -31,10 +31,16 @@ void free_all(t_stack *pila, char **str)
 
 void free_stack(t_stack *pila)
 {
-    if (pila->a)
+    while (pila->a)
+    {
         free(pila->a);
-    if (pila->b)
+        pila->a = pila->a->next;
+    }
+    while (pila->b)
+    {
         free(pila->b);
+        pila->b = pila->b->next;
+    }
     if (pila)
         free(pila);
 }
