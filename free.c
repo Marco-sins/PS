@@ -17,30 +17,33 @@ void free_all(t_stack *pila, char **str)
     int i;
 
     i = 0;
-    if (pila->a)
-        free(pila->a);
-    if (pila->b)
-        free(pila->b);
-    while (str[i])
+    free_stack(pila);
+    if (str != NULL)
     {
-        free(str[i]);
-        i++;
+        while (str[i] != NULL)
+        {
+            free(str[i]);
+            i++;
+        }
+        free(str);
     }
-    free(str);
 }
 
 void free_stack(t_stack *pila)
 {
-    while (pila->a)
+    t_node *tmp;
+
+    while (pila->a != NULL)
     {
+        tmp = pila->a->next;
         free(pila->a);
-        pila->a = pila->a->next;
+        pila->a = tmp;
     }
-    while (pila->b)
+    while (pila->b != NULL)
     {
+        tmp = pila->b->next;
         free(pila->b);
-        pila->b = pila->b->next;
+        pila->b = tmp;
     }
-    if (pila)
-        free(pila);
+    free(pila);
 }

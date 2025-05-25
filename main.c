@@ -35,6 +35,7 @@ int main(int ac, char **av)
     ft_printf("5\n");
     print_stack(pila);
     free_all(pila, str);
+    ft_printf("6\n");
     return (0);
 }
 

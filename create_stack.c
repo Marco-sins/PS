@@ -62,7 +62,7 @@ char **ft_complete(int ac, char **av)
     if (!str)
         return (NULL);
     i = 0;
-    while (i < ac - 2)
+    while (i < ac)
     {
         str[i] = av[i + 1];
         i++;
