@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mmembril <mmembril@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:08:44 by marco             #+#    #+#             */
-/*   Updated: 2025/05/27 10:43:24 by marco            ###   ########.fr       */
+/*   Updated: 2025/05/27 13:15:54 by mmembril         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+//Sends the first element at the end
 
 void ra(t_stack *pila, int p)
 {
@@ -26,7 +28,7 @@ void ra(t_stack *pila, int p)
         last = last->next;
     last->next = first;
     first->next = NULL;
-    if (p == 1)
+    if (p)
         ft_printf("ra\n");
 }
 
@@ -44,13 +46,13 @@ void rb(t_stack *pila, int p)
         last = last->next;
     last->next = first;
     first->next = NULL;
-    if (p == 1)
+    if (p)
         ft_printf("rb\n");
 }
 
 void rr(t_stack *pila)
 {
-    ra(pila, 0);
-    rb(pila, 0);
+    ra(pila, FALSE);
+    rb(pila, FALSE);
     ft_printf("rr\n");
 }

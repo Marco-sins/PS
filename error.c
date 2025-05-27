@@ -39,3 +39,17 @@ int ft_isnumber(const char *str)
     }
     return (TRUE);
 }
+
+int check_equals(int *array)
+{
+    int i;
+    
+    i = 0;
+    while (array[i] && array[i + 1])
+    {
+        if (array[i] == array[i + 1])
+            return (TRUE);
+        i++;
+    }
+    return (FALSE);
+}

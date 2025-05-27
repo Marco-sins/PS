@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mmembril <mmembril@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:37:18 by marco             #+#    #+#             */
-/*   Updated: 2025/05/27 11:33:36 by marco            ###   ########.fr       */
+/*   Updated: 2025/05/27 13:57:44 by mmembril         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void push_swap(t_stack *pila)
 {
     int len;
 
-    len = ft_stack_len(pila->a);
+    len = ft_stack_len(pila);
+    ft_preorder(pila, len);
     if (is_sorted(pila))
         return;
     if (len == 2)
@@ -35,11 +36,14 @@ void push_swap(t_stack *pila)
 
 int is_sorted(t_stack *pila)
 {
-    while (pila->a)
+    t_node *node;
+
+    node = pila->a;
+    while (node && node->next)
     {
-        if (pila->a->value > pila->a->next->value)
+        if (node->value > node->next->value)
             return (FALSE);
-        pila->a = pila->a->next;
+        node = node->next;
     }
     return (TRUE);
 }
@@ -50,18 +54,66 @@ void ft_preorder(t_stack *pila, int len)
     int i;
     t_node *node;
 
-    array = ft_calloc(sizeof(int), len);
+    array = ft_calloc(sizeof(int), len + 1);
     if (!array)
         ft_error("Error in malloc\n", pila);
     i = 0;
     node = pila->a;
-    while (i < len - 1)
+    while (node)
     {
         array[i] = node->value;
         node = node->next;
         i++;
     }
-    array = ft_order_array(array);
-    ft_set_index(pila, array);
+    ft_order_array(array, len, pila);
+    ft_set_index(pila, array, len);
+    free(array);
 }
 
+void ft_order_array(int *array, int len, t_stack *pila)
+{
+    int i;
+    int j;
+    int n;
+    
+    i = 0;
+    while (i < len - 1)
+    {
+        j = 0;
+        while (j < len - i - 1)
+        {
+            if (array[j] > array[j + 1])
+            {
+                n = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = n;
+            }
+            j++;
+        }   
+        i++;    
+    }
+    if (check_equals(array))
+        ft_error("Error: numeros repetidos\n", pila);
+}
+
+void ft_set_index(t_stack *pila, int *array, int len)
+{
+    t_node *node;
+    int i;
+    
+    node = pila->a;
+    while (node)
+    { 
+        i = 0;
+        while (i < len)
+        {
+            if (node->value == array[i])
+            {
+                node->index = i + 1;
+                break;
+            }
+            i++;
+        }
+        node = node->next;
+    }
+}

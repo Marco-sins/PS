@@ -17,19 +17,30 @@ int main(int ac, char **av)
     t_stack *pila;
     char **str;
 
+    printf("DEBBUG: 1\n");
     if (!check_av(ac, av))
-        return (0);
+    {
+        printf("DEBBUG: 0\n");
+        return (1);
+    }
     pila = init_stack(ac);
+    printf("DEBBUG: 2\n");
     if (!pila)
-        return (0);
+        return (1);
     if (ac == 2)
         str = ft_split(av[1], ' ');
     else
         str = ft_complete(ac, av);
+    printf("DEBBUG: 3\n");
     connect_node(pila, str);
-    push_swap(pila);
+    printf("DEBBUG: 4\n");
     print_stack(pila);
+    push_swap(pila);
+    printf("DEBBUG: 5\n");
+    print_stack(pila);
+    printf("DEBBUG: 6\n");
     free_all(pila, str);
+    printf("DEBBUG: 7\n");
     return (0);
 }
 
@@ -40,7 +51,7 @@ void print_stack(t_stack *pila)
     node = pila->a;
     while (node)
     {
-        ft_printf("%d\t", node->value);
+        ft_printf("%d %d\n", node->value, node->index);
         node = node->next;
     }
 }

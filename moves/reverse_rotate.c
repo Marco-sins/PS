@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mmembril <mmembril@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:22:34 by marco             #+#    #+#             */
-/*   Updated: 2025/05/27 10:43:28 by marco            ###   ########.fr       */
+/*   Updated: 2025/05/27 13:15:36 by mmembril         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+
+//Sends the last element to the top of the stack
 
 void rra(t_stack *pila, int p)
 {
@@ -29,7 +31,7 @@ void rra(t_stack *pila, int p)
     first->next = NULL;
     last->next = pila->a;
     pila->a = last;
-    if (p == 1)
+    if (p)
         ft_printf("rra\n");
 }
 
@@ -50,13 +52,13 @@ void rrb(t_stack *pila, int p)
     first->next = NULL;
     last->next = pila->b;
     pila->b = last;
-    if (p == 1)
+    if (p)
         ft_printf("rrb\n");
 }
 
 void rrr(t_stack *pila)
 {
-    rra(pila, 0);
-    rrb(pila, 0);
+    rra(pila, FALSE);
+    rrb(pila, FALSE);
     ft_printf("rrr\n");
 }

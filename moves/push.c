@@ -12,6 +12,8 @@
 
 #include "../push_swap.h"
 
+//Sends the first element of the stack to the another stack
+
 void pa(t_stack *pila)
 {
     t_node *nodo;

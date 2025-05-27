@@ -7,7 +7,10 @@ SRCS			= main.c \
 					moves/rotate.c \
 					moves/reverse_rotate.c \
 					push_swap.c \
-					utils.c
+					utils.c \
+					algorithm.c \
+					quick_sort.c \
+					radix_sort.c
 
 OBJDIR			= objs
 OBJS			= $(SRCS:%.c=$(OBJDIR)/%.o)
@@ -31,12 +34,10 @@ all: $(NAME)
 $(NAME): $(LIBFT) $(FT_PRINTF) $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBS)
 
-# Compila un .c en un .o dentro de objs/
 $(OBJDIR)/%.o: %.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# Librerías externas
 $(LIBFT):
 	@make -C $(LIBFT_DIR)
 

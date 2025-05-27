@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   radix_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmembril <mmembril@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/27 10:43:53 by marco             #+#    #+#             */
-/*   Updated: 2025/05/27 12:47:06 by mmembril         ###   ########.fr       */
+/*   Created: 2025/05/27 12:06:53 by mmembril          #+#    #+#             */
+/*   Updated: 2025/05/27 14:02:01 by mmembril         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int ft_stack_len(t_stack *pila)
+void radix_sort(t_stack *pila)
 {
-    t_node *temp;
-    int i;
-    
-    i = 0;
-    temp = pila->a;
-    while (temp)
-    {
-        temp = temp->next;
-        i++;
-    }
-    return (i);
+    (void)pila;
 }

@@ -3,44 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mmembril <mmembril@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:01:13 by marco             #+#    #+#             */
-/*   Updated: 2025/05/27 10:43:19 by marco            ###   ########.fr       */
+/*   Updated: 2025/05/27 13:15:43 by mmembril         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+//Swaps the 2 first elements of the stack
+
 void sa(t_stack *pila, int p)
 {
-    t_node *nodo;
+    t_node *first;
+    t_node *second;
 
     if (pila->a == NULL || pila->a->next == NULL)
         return;
-    nodo = pila->a;
-    pila->a = pila->a->next;
-    pila->a->next = nodo;
-    if (p == 1)
+    first = pila->a;
+    second = pila->a->next;
+    first->next = second->next;
+    second->next = first;
+    pila->a = second;
+    if (p)
         ft_printf("sa\n");
 }
 
 void sb(t_stack *pila, int p)
 {
-    t_node *nodo;
+    t_node *first;
+    t_node *second;
 
     if (pila->b == NULL || pila->b->next == NULL)
         return;
-    nodo = pila->b;
-    pila->b = pila->b->next;
-    pila->b->next = nodo;
-    if (p == 1)
+    first = pila->b;
+    second = pila->b->next;
+    first->next = second->next;
+    second->next = first;
+    pila->b = second;
+    if (p)
         ft_printf("sb\n");
 }
 
 void ss(t_stack *pila)
 {
-    sa(pila, 0);
-    sb(pila, 0);
+    sa(pila, FALSE);
+    sb(pila, FALSE);
     ft_printf("ss\n");
 }

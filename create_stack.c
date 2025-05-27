@@ -51,7 +51,7 @@ int check_av(int ac, char **av)
     }
     else
         return (FALSE);
-    return (FALSE);
+    return (TRUE);
 }
 
 char **ft_complete(int ac, char **av)
