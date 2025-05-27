@@ -57,7 +57,7 @@ void rra(t_stack *pila, int p);
 void rrb(t_stack *pila, int p);
 void rrr(t_stack *pila);
 void push_swap(t_stack *pila);
-int ft_stack_len(t_stack *pila);
+int ft_stack_len(t_node *node);
 void sort_two(t_stack *pila);
 void sort_three(t_stack *pila);
 void sort_four(t_stack *pila);
@@ -69,5 +69,10 @@ void ft_set_index(t_stack *pila, int *array, int len);
 void radix_sort(t_stack *pila);
 void quick_sort(t_stack *pila);
 int check_equals(int *array);
+int get_mitad(t_node *node);
+void quick_sort_a(t_stack *pila);
+int partition_a(t_stack *pila, int pivot);
+void quick_sort_b(t_stack *pila);
+int partition_b(t_stack *pila, int pivot);
 
 #endif

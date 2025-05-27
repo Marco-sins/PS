@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmembril <mmembril@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:37:18 by marco             #+#    #+#             */
-/*   Updated: 2025/05/27 13:57:44 by mmembril         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:52:52 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void push_swap(t_stack *pila)
 {
     int len;
 
-    len = ft_stack_len(pila);
+    len = ft_stack_len(pila->a);
     ft_preorder(pila, len);
     if (is_sorted(pila))
         return;
@@ -29,7 +29,7 @@ void push_swap(t_stack *pila)
     else if (len == 5)
         sort_five(pila);
     else if (len <= 100)
-        quick_sort(pila);
+        quick_sort_a(pila);
     else
         radix_sort(pila);
 }

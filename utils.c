@@ -3,25 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmembril <mmembril@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:43:53 by marco             #+#    #+#             */
-/*   Updated: 2025/05/27 12:47:06 by mmembril         ###   ########.fr       */
+/*   Updated: 2025/05/27 19:51:53 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int ft_stack_len(t_stack *pila)
+int ft_stack_len(t_node *node)
 {
-    t_node *temp;
     int i;
     
     i = 0;
-    temp = pila->a;
-    while (temp)
+    while (node)
     {
-        temp = temp->next;
+        node = node->next;
         i++;
     }
     return (i);
