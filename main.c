@@ -17,25 +17,19 @@ int main(int ac, char **av)
     t_stack *pila;
     char **str;
 
-    ft_printf("1\n");
-    if (!   check_av(ac, av))
+    if (!check_av(ac, av))
         return (0);
-    ft_printf("2\n");
-    pila = init_stack();
+    pila = init_stack(ac);
     if (!pila)
         return (0);
-    ft_printf("3\n");
     if (ac == 2)
         str = ft_split(av[1], ' ');
     else
         str = ft_complete(ac, av);
-    ft_printf("4\n");
     connect_node(pila, str);
-    //ft_algorithm(pila);
-    ft_printf("5\n");
+    push_swap(pila);
     print_stack(pila);
     free_all(pila, str);
-    ft_printf("6\n");
     return (0);
 }
 
@@ -46,7 +40,7 @@ void print_stack(t_stack *pila)
     node = pila->a;
     while (node)
     {
-        ft_printf("%d", node->value);
+        ft_printf("%d\t", node->value);
         node = node->next;
     }
 }

@@ -1,4 +1,14 @@
-SRCS			= main.c free.c error.c create_stack.c moves/push.c
+SRCS			= main.c \
+					free.c \
+					error.c \
+					create_stack.c \
+					moves/push.c \
+					moves/swap.c \
+					moves/rotate.c \
+					moves/reverse_rotate.c \
+					push_swap.c \
+					utils.c
+
 OBJDIR			= objs
 OBJS			= $(SRCS:%.c=$(OBJDIR)/%.o)
 

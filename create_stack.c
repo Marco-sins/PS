@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_stack *init_stack(void)
+t_stack *init_stack(int ac)
 {
     t_stack *pila;
     
@@ -21,6 +21,7 @@ t_stack *init_stack(void)
         return (0);
     pila->a = NULL;
     pila->b = NULL;
+    pila->args = ac;
     return (pila);
 }
 
@@ -34,7 +35,7 @@ int check_av(int ac, char **av)
         while (av[1][i])
         {
             if (!ft_isdigit(av[1][i]) && av[1][i] != ' ' && av[1][i] != '-' && av[1][i] != '+')
-                return (false);
+                return (FALSE);
             i++;
         }
     }
@@ -44,13 +45,13 @@ int check_av(int ac, char **av)
         while (av[i])
         {
             if (!ft_isnumber(av[i]))
-                return (false);
+                return (FALSE);
             i++;
         }
     }
     else
-        return (false);
-    return (true);
+        return (FALSE);
+    return (FALSE);
 }
 
 char **ft_complete(int ac, char **av)
@@ -58,16 +59,16 @@ char **ft_complete(int ac, char **av)
     char **str;
     int i;
 
-    str = (char **)ft_calloc(sizeof(char *), ac);
+    str = (char **)ft_calloc(ac, sizeof(char *));
     if (!str)
         return (NULL);
     i = 0;
-    while (i < ac)
+    while (i < ac - 1)
     {
         str[i] = av[i + 1];
         i++;
     }
-    str[i] = "\0";
+    str[i] = NULL;
     return (str);
 }
 
@@ -90,7 +91,9 @@ void connect_node(t_stack *pila, char **str)
     int i;
 
     i = 0;
-    while (str[i])
+    node = NULL;
+    new = NULL;
+    while (str[i] != NULL)
     {
         new = create_node(ft_atoi(str[i]));
         if (!new)

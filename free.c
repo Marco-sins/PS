@@ -20,7 +20,7 @@ void free_all(t_stack *pila, char **str)
     free_stack(pila);
     if (str != NULL)
     {
-        while (str[i] != NULL)
+        while (str[i] != NULL && pila->args == 2)
         {
             free(str[i]);
             i++;
