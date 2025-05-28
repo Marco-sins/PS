@@ -6,7 +6,7 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:37:18 by marco             #+#    #+#             */
-/*   Updated: 2025/05/28 12:29:37 by marco            ###   ########.fr       */
+/*   Updated: 2025/05/28 13:45:54 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	push_swap(t_stack *pila)
 	int	len;
 
 	len = ft_stack_len(pila->a);
-	printf("%d", len);
 	ft_preorder(pila, len);
 	if (is_sorted(pila->a))
 		return ;

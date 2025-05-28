@@ -28,12 +28,11 @@ int	main(int ac, char **av)
 		str = ft_complete(ac, av);
 	connect_node(pila, str);
 	push_swap(pila);
-	print_stack(pila);
 	free_all(pila, str);
 	return (0);
 }
 
-void	print_stack(t_stack *pila)
+/*void	print_stack(t_stack *pila)
 {
 	t_node	*node;
 
@@ -43,4 +42,4 @@ void	print_stack(t_stack *pila)
 		ft_printf("%d %d\n", node->value, node->index);
 		node = node->next;
 	}
-}
+}*/
