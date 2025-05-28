@@ -12,15 +12,15 @@
 
 #include "push_swap.h"
 
-int ft_stack_len(t_node *node)
+int	ft_stack_len(t_node *node)
 {
-    int i;
-    
-    i = 0;
-    while (node)
-    {
-        node = node->next;
-        i++;
-    }
-    return (i);
+	int	i;
+
+	i = 0;
+	while (node)
+	{
+		node = node->next;
+		i++;
+	}
+	return (i);
 }

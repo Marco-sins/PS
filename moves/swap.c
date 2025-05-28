@@ -14,41 +14,41 @@
 
 //Swaps the 2 first elements of the stack
 
-void sa(t_stack *pila, int p)
+void	sa(t_stack *pila, int p)
 {
-    t_node *first;
-    t_node *second;
+	t_node	*first;
+	t_node	*second;
 
-    if (pila->a == NULL || pila->a->next == NULL)
-        return;
-    first = pila->a;
-    second = pila->a->next;
-    first->next = second->next;
-    second->next = first;
-    pila->a = second;
-    if (p)
-        ft_printf("sa\n");
+	if (pila->a == NULL || pila->a->next == NULL)
+		return ;
+	first = pila->a;
+	second = pila->a->next;
+	first->next = second->next;
+	second->next = first;
+	pila->a = second;
+	if (p)
+		ft_printf("sa\n");
 }
 
-void sb(t_stack *pila, int p)
+void	sb(t_stack *pila, int p)
 {
-    t_node *first;
-    t_node *second;
+	t_node	*first;
+	t_node	*second;
 
-    if (pila->b == NULL || pila->b->next == NULL)
-        return;
-    first = pila->b;
-    second = pila->b->next;
-    first->next = second->next;
-    second->next = first;
-    pila->b = second;
-    if (p)
-        ft_printf("sb\n");
+	if (pila->b == NULL || pila->b->next == NULL)
+		return ;
+	first = pila->b;
+	second = pila->b->next;
+	first->next = second->next;
+	second->next = first;
+	pila->b = second;
+	if (p)
+		ft_printf("sb\n");
 }
 
-void ss(t_stack *pila)
+void	ss(t_stack *pila)
 {
-    sa(pila, FALSE);
-    sb(pila, FALSE);
-    ft_printf("ss\n");
+	sa(pila, FALSE);
+	sb(pila, FALSE);
+	ft_printf("ss\n");
 }

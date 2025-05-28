@@ -73,7 +73,7 @@ char	**ft_split(char const *s, char c)
 			i++;
 		size = ft_word(s, c, i);
 		str[j] = ft_substr(s, i, size);
-		if (!str[j])	
+		if (!str[j])
 			return (ft_free(str, j), NULL);
 		i += size;
 		j++;

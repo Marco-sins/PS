@@ -9,7 +9,6 @@ SRCS			= main.c \
 					push_swap.c \
 					utils.c \
 					algorithm.c \
-					quick_sort.c \
 					radix_sort.c
 
 OBJDIR			= objs
