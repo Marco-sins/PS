@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_stack	*init_stack(int ac)
+t_stack	*init_stack(void)
 {
 	t_stack	*pila;
 
@@ -21,36 +21,20 @@ t_stack	*init_stack(int ac)
 		return (0);
 	pila->a = NULL;
 	pila->b = NULL;
-	pila->args = ac;
 	return (pila);
 }
 
-int	check_av(int ac, char **av)
+int	check_av(char **av)
 {
 	int	i;
 
 	i = 0;
-	if (ac == 2)
+	while (av[i] != NULL)
 	{
-		while (av[1][i])
-		{
-			if (!ft_isdigit(av[1][i]) && av[1][i] != ' ' && av[1][i] != '-'
-				&& av[1][i] != '+')
-				return (FALSE);
-			i++;
-		}
+		if (!ft_isnumber(av[i]))
+			return (FALSE);
+		i++;
 	}
-	else if (ac > 2)
-	{
-		while (av[i + 1])
-		{
-			if (!ft_isnumber(av[i + 1]))
-				return (FALSE);
-			i++;
-		}
-	}
-	else
-		return (FALSE);
 	return (TRUE);
 }
 

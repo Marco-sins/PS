@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mmembril <mmembril@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 12:06:02 by mmembril          #+#    #+#             */
-/*   Updated: 2025/05/28 12:46:52 by marco            ###   ########.fr       */
+/*   Updated: 2025/06/01 12:54:55 by mmembril         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,23 @@ void	sort_three(t_stack *pila)
 	t_node	*node;
 
 	node = pila->a;
-	if (node->next->index == 3)
+	if (node->index == 1 && node->next->index == 3)
+	{
 		ra(pila, TRUE);
-	else if (node->next->next->index == 3)
+		sa(pila, TRUE);
 		rra(pila, TRUE);
-	pb(pila);
-	sort_two(pila);
-	pa(pila);
-	ra(pila, TRUE);
+	}
+	else if (node->index == 2 && node->next->index == 3)
+		rra(pila, TRUE);
+	else if (node->index == 2 && node->next->index == 1)
+		sa(pila, TRUE);
+	else if (node->index == 3 && node->next->index == 1)
+		ra(pila, TRUE);
+	else if (node->index == 3 && node->next->index == 2)
+	{
+		sa(pila, TRUE);
+		rra(pila, TRUE);
+	}
 }
 
 void	sort_four(t_stack *pila)

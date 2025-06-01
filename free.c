@@ -17,16 +17,16 @@ void	free_all(t_stack *pila, char **str)
 	int	i;
 
 	i = 0;
-	free_stack(pila);
 	if (str != NULL)
 	{
-		while (str[i] != NULL && pila->args == 2)
+		while (str[i] != NULL)
 		{
 			free(str[i]);
 			i++;
 		}
 		free(str);
 	}
+	free_stack(pila);
 }
 
 void	free_stack(t_stack *pila)

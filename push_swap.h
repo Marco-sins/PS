@@ -25,12 +25,10 @@ typedef struct s_node
 	int				value;
 	int				index;
 	struct s_node	*next;
-	struct s_node	*previus;
 }			t_node;
 
 typedef struct s_stack
 {
-	int		args;
 	t_node	*a;
 	t_node	*b;
 }		t_stack;
@@ -38,8 +36,8 @@ typedef struct s_stack
 void	connect_node(t_stack *pila, char **str);
 t_node	*create_node(int value);
 char	**ft_complete(int ac, char **av);
-int		check_av(int ac, char **av);
-t_stack	*init_stack(int ac);
+int		check_av(char **av);
+t_stack	*init_stack(void);
 void	free_all(t_stack *pila, char **str);
 void	ft_error(char *str, t_stack *pila);
 int		ft_isnumber(const char *str);

@@ -18,7 +18,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	int		j;
 
-	s3 = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
+	s3 = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 2, sizeof(char));
 	i = 0;
 	j = 0;
 	if (!s3)
@@ -29,6 +29,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		i++;
 		j++;
 	}
+	s3[j++] = ' ';
 	i = 0;
 	while (s2[i])
 	{

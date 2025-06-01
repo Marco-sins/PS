@@ -12,20 +12,38 @@
 
 #include "push_swap.h"
 
+char	**join_av(int ac, char **av)
+{
+	int		i;
+	char	*join;
+	char	*temp;
+	char	**str;
+
+	i = 2;
+	join = ft_strdup(av[i - 1]);
+	while (i < ac)
+	{
+		temp = join;
+		join = ft_strjoin(join, av[i]);
+		free(temp);
+		i++;
+	}
+	str = ft_split(join, ' ');
+	free(join);
+	return (str);
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	*pila;
 	char	**str;
 
-	if (!check_av(ac, av))
+	str = join_av(ac, av);
+	if (!check_av(str))
 		return (1);
-	pila = init_stack(ac);
+	pila = init_stack();
 	if (!pila)
 		return (1);
-	if (ac == 2)
-		str = ft_split(av[1], ' ');
-	else
-		str = ft_complete(ac, av);
 	connect_node(pila, str);
 	push_swap(pila);
 	free_all(pila, str);
