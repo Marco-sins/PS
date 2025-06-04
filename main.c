@@ -50,14 +50,26 @@ int	main(int ac, char **av)
 	return (0);
 }
 
-/*void	print_stack(t_stack *pila)
+void	print_stack_a(t_stack *pila)
 {
 	t_node	*node;
 
 	node = pila->a;
 	while (node)
 	{
-		ft_printf("%d %d\n", node->value, node->index);
+		ft_printf("A:%d %d\n", node->value, node->index);
 		node = node->next;
 	}
-}*/
+}
+
+void	print_stack_b(t_stack *pila)
+{
+	t_node	*node;
+
+	node = pila->b;
+	while (node)
+	{
+		ft_printf("B:%d %d\n", node->value, node->index);
+		node = node->next;
+	}
+}

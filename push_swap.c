@@ -6,7 +6,7 @@
 /*   By: marco <marco@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 10:37:18 by marco             #+#    #+#             */
-/*   Updated: 2025/05/28 13:45:54 by marco            ###   ########.fr       */
+/*   Updated: 2025/06/04 10:25:15 by marco            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ void	ft_preorder(t_stack *pila, int len)
 		node = node->next;
 		i++;
 	}
-	ft_order_array(array, len, pila);
+	ft_order_array(array, len);
 	ft_set_index(pila, array, len);
 	free(array);
 }
 
-void	ft_order_array(int *array, int len, t_stack *pila)
+void	ft_order_array(int *array, int len)
 {
 	int	i;
 	int	j;
@@ -87,8 +87,6 @@ void	ft_order_array(int *array, int len, t_stack *pila)
 		}
 		i++;
 	}
-	if (check_equals(array))
-		ft_error("Error: numeros repetidos\n", pila);
 }
 
 void	ft_set_index(t_stack *pila, int *array, int len)
@@ -111,4 +109,6 @@ void	ft_set_index(t_stack *pila, int *array, int len)
 		}
 		node = node->next;
 	}
+	if (check_equals(pila))
+		ft_error("Equals numbers", pila);
 }

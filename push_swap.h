@@ -41,7 +41,8 @@ t_stack	*init_stack(void);
 void	free_all(t_stack *pila, char **str);
 void	ft_error(char *str, t_stack *pila);
 int		ft_isnumber(const char *str);
-void	print_stack(t_stack *pila);
+void	print_stack_a(t_stack *pila);
+void	print_stack_b(t_stack *pila);
 void	free_stack(t_stack *pila);
 void	pa(t_stack *pila);
 void	pb(t_stack *pila);
@@ -62,9 +63,9 @@ void	sort_four(t_stack *pila);
 void	sort_five(t_stack *pila);
 int		is_sorted(t_node *node);
 void	ft_preorder(t_stack *pila, int len);
-void	ft_order_array(int *array, int len, t_stack *pila);
+void	ft_order_array(int *array, int len);
 void	ft_set_index(t_stack *pila, int *array, int len);
 void	radix_sort(t_stack *pila);
-int		check_equals(int *array);
+int	check_equals(t_stack *pila);
 
 #endif

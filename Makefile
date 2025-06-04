@@ -9,7 +9,7 @@ SRCS			= main.c \
 					push_swap.c \
 					utils.c \
 					algorithm.c \
-					radix_sort.c
+					radix_sort.c 
 
 OBJDIR			= objs
 OBJS			= $(SRCS:%.c=$(OBJDIR)/%.o)

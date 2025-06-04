@@ -40,16 +40,23 @@ int	ft_isnumber(const char *str)
 	return (TRUE);
 }
 
-int	check_equals(int *array)
+int	check_equals(t_stack *pila)
 {
-	int	i;
+	int	*array;
+	t_node	*node;
 
-	i = 0;
-	while (array[i] && array[i + 1])
+	node = pila->a;
+	array = ft_calloc(sizeof(int), ft_stack_len(node) + 1);
+	if (!array)
+		ft_error("Malloc", pila);
+	while (node)
 	{
-		if (array[i] == array[i + 1])
+		if (array[node->index - 1])
+		{
 			return (TRUE);
-		i++;
+		}
+		array[node->index - 1] = 1;
+		node = node->next;
 	}
 	return (FALSE);
 }
