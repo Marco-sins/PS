@@ -14,6 +14,12 @@
 
 void	free_all(t_stack *pila, char **str)
 {
+	free_str(str);
+	free_stack(pila);
+}
+
+void	free_str(char **str)
+{
 	int	i;
 
 	i = 0;
@@ -26,7 +32,6 @@ void	free_all(t_stack *pila, char **str)
 		}
 		free(str);
 	}
-	free_stack(pila);
 }
 
 void	free_stack(t_stack *pila)

@@ -32,7 +32,11 @@ int	check_av(char **av)
 	while (av[i] != NULL)
 	{
 		if (!ft_isnumber(av[i]))
+		{
+			ft_printf("ERROR: Invalid argument\n");
+			free_str(av);
 			return (FALSE);
+		}
 		i++;
 	}
 	return (TRUE);
@@ -80,6 +84,8 @@ void	connect_node(t_stack *pila, char **str)
 	while (str[i] != NULL)
 	{
 		new = create_node(ft_atoi(str[i]));
+		if (new <= INT_MIN || new >= INT_MAX)
+			ft_error("Invalid arguments\n", pila);
 		if (!new)
 			ft_error("Error in malloc\n", pila);
 		if (!pila->a)

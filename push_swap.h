@@ -16,6 +16,7 @@
 # include "Libft/libft.h"
 # include "ft_printf/ft_printf.h"
 # include <stdint.h>
+# include <limits.h>
 
 # define TRUE 1
 # define FALSE 0
@@ -39,10 +40,9 @@ char	**ft_complete(int ac, char **av);
 int		check_av(char **av);
 t_stack	*init_stack(void);
 void	free_all(t_stack *pila, char **str);
+void	free_str(char **str);
 void	ft_error(char *str, t_stack *pila);
 int		ft_isnumber(const char *str);
-void	print_stack_a(t_stack *pila);
-void	print_stack_b(t_stack *pila);
 void	free_stack(t_stack *pila);
 void	pa(t_stack *pila);
 void	pb(t_stack *pila);
@@ -66,6 +66,6 @@ void	ft_preorder(t_stack *pila, int len);
 void	ft_order_array(int *array, int len);
 void	ft_set_index(t_stack *pila, int *array, int len);
 void	radix_sort(t_stack *pila);
-int	check_equals(t_stack *pila);
+int		check_equals(t_stack *pila);
 
 #endif

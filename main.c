@@ -50,7 +50,7 @@ int	main(int ac, char **av)
 	return (0);
 }
 
-void	print_stack_a(t_stack *pila)
+/*svoid	print_stack_a(t_stack *pila)
 {
 	t_node	*node;
 
@@ -72,4 +72,4 @@ void	print_stack_b(t_stack *pila)
 		ft_printf("B:%d %d\n", node->value, node->index);
 		node = node->next;
 	}
-}
+}*/

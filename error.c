@@ -53,10 +53,12 @@ int	check_equals(t_stack *pila)
 	{
 		if (array[node->index - 1])
 		{
+			free(array);
 			return (TRUE);
 		}
 		array[node->index - 1] = 1;
 		node = node->next;
 	}
+	free(array);
 	return (FALSE);
 }
